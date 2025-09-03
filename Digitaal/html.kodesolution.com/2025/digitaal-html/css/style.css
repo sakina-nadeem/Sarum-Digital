@@ -24980,3 +24980,113 @@ Sidebar
 .btnn-title:hover {
   transform: translateY(-2px); /* slight lift */
 }
+
+.user-info .thumb img {
+  width: 80px;       /* control width */
+  height: 80px;      /* control height */
+  object-fit: cover; /* keeps face centered */
+  border-radius: 50%; /* make it round like profile pic */
+}
+
+
+.clients-section .client-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px; /* same height for all blocks */
+}
+
+.clients-section .client-block .image img {
+  max-height: 100px; /* controls logo height */
+  max-width: 160px;  /* controls logo width */
+  object-fit: contain; /* keeps proportions */
+  margin: 0 auto;
+  display: block;
+}
+
+.clients-section .swiper-wrapper {
+  display: flex;
+  justify-content: center; /* centers all logos in the row */
+  align-items: center;
+}
+
+.clients-section .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clients-section .client-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px; /* uniform height */
+}
+
+.clients-section .client-block .image img {
+  max-height: 100px;  /* uniform size */
+  max-width: 160px;
+  object-fit: contain;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Center all slides */
+.clients-section .swiper-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* allows wrapping on small screens */
+  gap: 20px; /* space between logos */
+}
+
+/* Center each slide */
+.clients-section .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 1 150px; /* each logo block resizes */
+}
+
+/* Logo block */
+.clients-section .client-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px; /* base height */
+  width: 100%;
+}
+
+/* Logo image */
+.clients-section .client-block .image img {
+  max-height: 80px;
+  max-width: 100%;
+  object-fit: contain;
+  margin: 0 auto;
+  display: block;
+}
+
+/* 📱 Responsive fixes */
+@media (max-width: 768px) {
+  .clients-section .swiper-slide {
+    flex: 0 1 120px; /* shrink width */
+  }
+  .clients-section .client-block {
+    height: 80px; /* smaller height */
+  }
+  .clients-section .client-block .image img {
+    max-height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .clients-section .swiper-slide {
+    flex: 0 1 100px;
+  }
+  .clients-section .client-block {
+    height: 70px;
+  }
+  .clients-section .client-block .image img {
+    max-height: 50px;
+  }
+}
