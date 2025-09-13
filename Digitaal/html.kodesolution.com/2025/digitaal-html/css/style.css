@@ -18487,6 +18487,30 @@ Section Title
 .work-section .outer-box .gx-50 {
   --bs-gutter-x: 30px;
 }
+
+/* Custom column class for 7 columns layout */
+.col-xl-custom {
+  flex: 0 0 auto;
+  width: 14.2857%; /* 100% / 7 columns */
+}
+
+@media (max-width: 1199.98px) {
+  .col-xl-custom {
+    width: 25%; /* 4 columns on large tablets */
+  }
+}
+
+@media (max-width: 767.98px) {
+  .col-xl-custom {
+    width: 33.3333%; /* 3 columns on tablets */
+  }
+}
+
+@media (max-width: 575.98px) {
+  .col-xl-custom {
+    width: 50%; /* 2 columns on mobile */
+  }
+}
 .work-section .marquee {
   border: 0;
   padding: 0 0 70px;
@@ -25089,4 +25113,26 @@ Sidebar
   .clients-section .client-block .image img {
     max-height: 50px;
   }
+}
+
+/* AI Solutions Team Gradient */
+.gradient-ai {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Other team gradients for consistency */
+.gradient-ux {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.gradient-app {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.gradient-web {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.gradient-video {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
 }

@@ -496,6 +496,192 @@
   display: block;
 }
 
+/* Portfolio Filter Tabs */
+.portfolio-filter-tabs {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    color: var(--text-white);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.portfolio-tab {
+    background: var(--card-bg) !important;
+    border: 2px solid var(--border-color) !important;
+    color: var(--text-gray) !important;
+    padding: 1rem 2rem !important;
+    margin: 0 0.5rem !important;
+    border-radius: 50px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.portfolio-tab:hover {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+    border-color: var(--primary-color) !important;
+    color: white !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 25px rgba(78, 84, 200, 0.3) !important;
+}
+
+.portfolio-tab.active {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+    border-color: var(--primary-color) !important;
+    color: white !important;
+    box-shadow: 0 10px 25px rgba(78, 84, 200, 0.4) !important;
+}
+
+.portfolio-tab i {
+    margin-right: 0.5rem;
+}
+
+/* Tab Content Animation */
+.tab-pane {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.tab-pane.show.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Tech Tags Styling */
+.tech-tag {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 0.2rem 0.3rem 0.2rem 0;
+    transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* Enhanced Project Layout */
+.tech-stack-section {
+    margin: 1rem 0;
+}
+
+.tech-stack-section h5 {
+    color: var(--text-white);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    border-left: 3px solid var(--primary-color);
+    padding-left: 0.75rem;
+}
+
+.project-features {
+    margin: 1.5rem 0;
+}
+
+.project-features h5 {
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.project-features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.project-features li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-gray);
+    line-height: 1.5;
+}
+
+.project-features li strong {
+    color: var(--text-white);
+    font-weight: 600;
+}
+
+.project-metrics {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--border-color);
+}
+
+.project-metrics h5 {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.metric-item {
+    text-align: center;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(78, 84, 200, 0.1), rgba(143, 148, 251, 0.1));
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.metric-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.metric-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    font-weight: 500;
+}
+
+.project-description p {
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .metrics-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    
+    .tech-stack-section h5 {
+        font-size: 0.85rem;
+    }
+    
+    .metric-number {
+        font-size: 1.2rem;
+    }
+    
+    .metric-label {
+        font-size: 0.75rem;
+    }
+}
+
 </style>
 </head>
 
@@ -713,9 +899,32 @@
       <div class="title-stroke-text text2 fadeInUpBig"></div>
     </div>
     <div class="container">
+      
+      <!-- Portfolio Filter Tabs -->
+      <div class="portfolio-filter-tabs text-center mb-5">
+        <h2 class="section-title mb-4">Our Work</h2>
+        <ul class="nav nav-pills justify-content-center mb-4" id="portfolioTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active portfolio-tab" id="web-dev-tab" data-bs-toggle="pill" data-bs-target="#web-development" type="button" role="tab" aria-controls="web-development" aria-selected="true">
+              <i class="fas fa-globe me-2"></i>Web Development
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link portfolio-tab" id="mobile-dev-tab" data-bs-toggle="pill" data-bs-target="#mobile-development" type="button" role="tab" aria-controls="mobile-development" aria-selected="false">
+              <i class="fas fa-mobile-alt me-2"></i>Mobile Development
+            </button>
+          </li>
+        </ul>
+      </div>
 
-     <!-- Project 2 -->
-<div class="project-card fade-in">
+      <!-- Tab Content -->
+      <div class="tab-content" id="portfolioTabContent">
+        
+        <!-- Web Development Projects -->
+        <div class="tab-pane fade show active" id="web-development" role="tabpanel" aria-labelledby="web-dev-tab">
+
+          <!-- Frontend Project 1 -->
+          <div class="project-card fade-in">
   <div class="project-images-grid">
     <div class="project-image-item">
       <img src="images/projects/adwat360 1.webp" alt="Project Image 1">
@@ -737,277 +946,816 @@
     </div>
   </div>
 
-  <div class="project-content">
-    <h3 class="project-title">Project</h3>
-    <p class="project-description">
-      Our aim is to make life hassle-free by letting you shop at your convenience and comfort. 
-      Living in UAE, we never have enough time to do all the things we want to do.
-    </p>
-
-   <div class="project-meta"><strong style="color:#cbcec0;">Client:</strong> <span style="color:#d9f45f;">Sarum Digital</span></div>
-<div class="project-meta"><strong style="color:#cbcec0;">Year:</strong> <span style="color:#d9f45f;">2024</span></div>
-<div class="project-meta"><strong style="color:#cbcec0;">Stack:</strong> <span style="color:#d9f45f;">Flutter</span></div>
-
-    <a href="page-contact.html" class="btn btn-primary">Discuss Your Idea</a>
-  </div>
-
-  <div class="review-section">
-    <div class="review-header">
-      <h4>Client Feedback</h4>
-    </div>
-    <div class="swiper review-swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="review-card">
-            <div class="rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <p class="review-text" style="color: black">
-              Working with Sarum Digital was a smooth experience. Their dedication to making shopping 
-              easier in the UAE truly shows in the final product.
-            </p>
-            <div class="reviewer">
-              <div class="reviewer-img">
-                <img src="images/client3.jpg" alt="Emma Rodriguez">
+            <div class="project-content">
+              <div class="project-title">
+                <h3>ADWAT360 - Smart Water Management Platform</h3>
               </div>
-              <div class="reviewer-info">
-                <h5>Emma Rodriguez</h5>
-                <span>Product Manager, SarumDigital</span>
+              <div class="project-meta">
+                <div class="tech-stack-section">
+                  <h5>Frontend Technologies:</h5>
+                  <span class="tech-tag">React.js 18</span>
+                  <span class="tech-tag">Next.js 14</span>
+                  <span class="tech-tag">TypeScript</span>
+                  <span class="tech-tag">Tailwind CSS</span>
+                  <span class="tech-tag">Chart.js</span>
+                  <span class="tech-tag">PWA</span>
+                </div>
+                <div class="tech-stack-section">
+                  <h5>Backend Technologies:</h5>
+                  <span class="tech-tag">Node.js</span>
+                  <span class="tech-tag">Express.js</span>
+                  <span class="tech-tag">GraphQL</span>
+                  <span class="tech-tag">PostgreSQL</span>
+                  <span class="tech-tag">Redis</span>
+                  <span class="tech-tag">Socket.io</span>
+                </div>
+                <div class="tech-stack-section">
+                  <h5>Infrastructure:</h5>
+                  <span class="tech-tag">AWS EC2</span>
+                  <span class="tech-tag">RDS</span>
+                  <span class="tech-tag">CloudFront</span>
+                  <span class="tech-tag">Docker</span>
+                  <span class="tech-tag">Nginx</span>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="review-card">
-            <div class="rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <p class="review-text" style="color: black">
-              The team’s use of Flutter gave us a fast, smooth, and reliable application. Highly recommend them 
-              for anyone wanting quality and speed.
-            </p>
-            <div class="reviewer">
-              <div class="reviewer-img">
-                <img src="images/client5.jpg" alt="David Kim">
-              </div>
-              <div class="reviewer-info">
-                <h5>David Kim</h5>
-                <span>CTO, Sarum Digital</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-pagination"></div>
-    </div>
-  </div>
-</div>
+              <div class="project-description">
+                <p><strong>ADWAT360</strong> is a comprehensive water management solution serving municipalities and businesses across the Middle East. This enterprise-grade platform provides real-time monitoring, analytics, and intelligent automation for water distribution systems.</p>
+                
+                <div class="project-features">
+                  <h5>Key Features:</h5>
+                  <ul>
+                    <li><strong>Real-time Monitoring:</strong> Live water flow, pressure, and quality monitoring with IoT sensors</li>
+                    <li><strong>Predictive Analytics:</strong> Machine learning algorithms predict maintenance needs and consumption patterns</li>
+                    <li><strong>Smart Alerts:</strong> Automated notifications for leaks, pressure drops, and system anomalies</li>
+                    <li><strong>Interactive Dashboards:</strong> Customizable charts and graphs with drill-down capabilities</li>
+                    <li><strong>Mobile-First Design:</strong> Responsive interface optimized for field technicians</li>
+                    <li><strong>Multi-tenant Architecture:</strong> Supports multiple clients with isolated data and settings</li>
+                  </ul>
+                </div>
 
-
-     <!-- Project 3 -->
-<div class="project-card fade-in">
-  <div class="project-images-grid">
-    <div class="project-image-item">
-      <img src="images/projects/flash 1.webp" alt="Project Image 1">
-      <div class="project-image-item-overlay">
-        <i class="fas fa-search-plus"></i>
-      </div>
-    </div>
-    <div class="project-image-item">
-      <img src="images/projects/flash 3.webp" alt="Project Image 2">
-      <div class="project-image-item-overlay">
-        <i class="fas fa-search-plus"></i>
-      </div>
-    </div>
-    <div class="project-image-item">
-      <img src="images/projects/flash 4.webp" alt="Project Image 3">
-      <div class="project-image-item-overlay">
-        <i class="fas fa-search-plus"></i>
-      </div>
-    </div>
-  </div>
-
-  <div class="project-content">
-    <h3 class="project-title">Project</h3>
-    <p class="project-description">
-      Our aim is to make life hassle-free by letting you shop at your convenience and comfort. 
-      Living in UAE, we never have enough time to do all the things we want to do.
-    </p>
-
-    
-   <div class="project-meta"><strong style="color:#cbcec0;">Client:</strong> <span style="color:#d9f45f;">Sarum Digital</span></div>
-<div class="project-meta"><strong style="color:#cbcec0;">Year:</strong> <span style="color:#d9f45f;">2024</span></div>
-<div class="project-meta"><strong style="color:#cbcec0;">Stack:</strong> <span style="color:#d9f45f;">Flutter</span></div>
-
-    <a href="page-contact.html" class="btn btn-primary">Discuss Your Idea</a>
-  </div>
-
-  <div class="review-section">
-    <div class="review-header">
-      <h4>Client Feedback</h4>
-    </div>
-    <div class="swiper review-swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="review-card">
-            <div class="rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <p class="review-text" style="color: black">
-              Working with Sarum Digital was a smooth experience. Their dedication to making 
-              shopping easier in the UAE truly shows in the final product.
-            </p>
-            <div class="reviewer">
-              <div class="reviewer-img">
-                <img src="images/client4.jpg" alt="James Wilson">
-              </div>
-              <div class="reviewer-info">
-                <h5>James Wilson</h5>
-                <span>Marketing Director, Sarum Digital</span>
+                <div class="project-metrics">
+                  <h5>Performance Metrics:</h5>
+                  <div class="metrics-grid">
+                    <div class="metric-item">
+                      <span class="metric-number">10,000+</span>
+                      <span class="metric-label">IoT Sensors Connected</span>
+                    </div>
+                    <div class="metric-item">
+                      <span class="metric-number">99.9%</span>
+                      <span class="metric-label">System Uptime</span>
+                    </div>
+                    <div class="metric-item">
+                      <span class="metric-number">< 200ms</span>
+                      <span class="metric-label">Average Response Time</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="review-card">
-            <div class="rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star-half-alt"></i>
-            </div>
-            <p class="review-text" style="color: black">
-              The team’s use of Flutter gave us a fast, smooth, and reliable application. Highly recommend 
-              them for anyone wanting quality and speed.
-            </p>
-            <div class="reviewer">
-              <div class="reviewer-img">
-                <img src="images/client3.jpg" alt="Lisa Taylor">
+
+          <!-- Frontend Project 2 -->
+          <div class="project-card fade-in">
+            <div class="project-images-grid">
+              <div class="project-image-item">
+                <img src="images/projects/flash 1.webp" alt="Dashboard UI">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
               </div>
-              <div class="reviewer-info">
-                <h5>Lisa Taylor</h5>
-                <span>CEO, Sarum Digital</span>
+              <div class="project-image-item">
+                <img src="images/projects/flash 3.webp" alt="Analytics View">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/projects/flash 4.webp" alt="Mobile View">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-pagination"></div>
-    </div>
-  </div>
-</div>
-
-
-     <!-- Project 4 -->
-<div class="project-card fade-in">
-  <div class="project-images-grid">
-    <div class="project-image-item">
-      <img src="images/projects/apc 1.jfif" alt="Project Image 1">
-      <div class="project-image-item-overlay">
-        <i class="fas fa-search-plus"></i>
-      </div>
-    </div>
-    <div class="project-image-item">
-      <img src="images/projects/apc 2.jfif" alt="Project Image 2">
-      <div class="project-image-item-overlay">
-        <i class="fas fa-search-plus"></i>
-      </div>
-    </div>
-    <div class="project-image-item">
-      <img src="images/projects/apc 3.jfif" alt="Project Image 3">
-      <div class="project-image-item-overlay">
-        <i class="fas fa-search-plus"></i>
-      </div>
-    </div>
-  </div>
-
-  <div class="project-content">
-    <h3 class="project-title">Project</h3>
-    <p class="project-description">
-      Need help at home? Our app connects you with reliable and verified professionals 
-      for a wide range of home services — anytime, anywhere!
-    </p>
-
-    
-   <div class="project-meta"><strong style="color:#cbcec0;">Client:</strong> <span style="color:#d9f45f;">Sarum Digital</span></div>
-<div class="project-meta"><strong style="color:#cbcec0;">Year:</strong> <span style="color:#d9f45f;">2024</span></div>
-<div class="project-meta"><strong style="color:#cbcec0;">Stack:</strong> <span style="color:#d9f45f;">Flutter</span></div>
-
-    <a href="page-contact.html" class="btn btn-primary">Discuss Your Idea</a>
-  </div>
-
-  <div class="review-section">
-    <div class="review-header">
-      <h4>Client Feedback</h4>
-    </div>
-    <div class="swiper review-swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="review-card">
-            <div class="rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <p class="review-text" style="color: black">
-              Sarum Digital delivered an excellent app that made finding reliable home 
-              services effortless. The professionalism and smooth experience exceeded expectations.
-            </p>
-            <div class="reviewer">
-              <div class="reviewer-img">
-                <img src="images/client2.jpg" alt="Alex Turner">
+            <div class="project-content">
+              <div class="project-title">
+                <h3>Analytics Dashboard UI</h3>
               </div>
-              <div class="reviewer-info">
-                <h5>Alex Turner</h5>
-                <span>Founder, Sarum Digital</span>
+              <div class="project-meta">
+                <span class="tech-tag">Vue.js</span>
+                <span class="tech-tag">Chart.js</span>
+                <span class="tech-tag">SCSS</span>
+                <span class="tech-tag">PWA</span>
+              </div>
+              <div class="project-description">
+                Interactive analytics dashboard with real-time data visualization, customizable widgets, and responsive design for optimal user experience across devices.
               </div>
             </div>
           </div>
+
         </div>
-        <div class="swiper-slide">
-          <div class="review-card">
-            <div class="rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star-half-alt"></i>
-            </div>
-            <p class="review-text" style="color: black">
-              The app’s usability and speed are impressive. Thanks to the Flutter build, 
-              it runs seamlessly and provides users with quick access to trusted services.
-            </p>
-            <div class="reviewer">
-              <div class="reviewer-img">
-                <img src="images/client5.jpg" alt="Sophia Martinez">
+
+        <!-- Backend Projects -->
+        <div class="tab-pane fade" id="backend" role="tabpanel" aria-labelledby="backend-tab">
+
+          <!-- Backend Project 1 -->
+          <div class="project-card fade-in">
+            <div class="project-images-grid">
+              <div class="project-image-item">
+                <img src="images/projects/apc 1.jfif" alt="API Documentation">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
               </div>
-              <div class="reviewer-info">
-                <h5>Sophia Martinez</h5>
-                <span>COO, Sarum Digital</span>
+              <div class="project-image-item">
+                <img src="images/projects/apc 2.jfif" alt="Database Schema">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/projects/apc 3.jfif" alt="Server Architecture">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-title">
+                <h3>E-commerce API System</h3>
+              </div>
+              <div class="project-meta">
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Express.js</span>
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">JWT</span>
+              </div>
+              <div class="project-description">
+                Scalable RESTful API system for e-commerce platform with secure authentication, payment processing, inventory management, and real-time order tracking.
               </div>
             </div>
           </div>
+
+          <!-- Backend Project 2 -->
+          <div class="project-card fade-in">
+            <div class="project-images-grid">
+              <div class="project-image-item">
+                <img src="images/resource/service5-3.jpg" alt="Microservices Architecture">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/resource/service1-3.jpg" alt="Cloud Infrastructure">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/resource/service5-1.jpg" alt="Monitoring Dashboard">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-title">
+                <h3>Microservices Platform</h3>
+              </div>
+              <div class="project-meta">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Django</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">Redis</span>
+                <span class="tech-tag">Docker</span>
+              </div>
+              <div class="project-description">
+                Robust microservices architecture with containerized services, API gateway, message queuing, and comprehensive monitoring for enterprise applications.
+              </div>
+            </div>
+          </div>
+
         </div>
+
+        <!-- Full Stack Projects -->
+        <div class="tab-pane fade" id="fullstack" role="tabpanel" aria-labelledby="fullstack-tab">
+
+          <!-- Full Stack Project 1 -->
+          <div class="project-card fade-in">
+            <div class="project-images-grid">
+              <div class="project-image-item">
+                <img src="images/projects/adwat360 1.webp" alt="Full Stack App Frontend">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/projects/flash 1.webp" alt="Admin Dashboard">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/projects/apc 1.jfif" alt="Mobile App">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-title">
+                <h3>ADWAT360 - Water Management System</h3>
+              </div>
+              <div class="project-meta">
+                <span class="tech-tag">MERN Stack</span>
+                <span class="tech-tag">React Native</span>
+                <span class="tech-tag">GraphQL</span>
+                <span class="tech-tag">AWS</span>
+              </div>
+              <div class="project-description">
+                Complete water management solution with web dashboard, mobile app, IoT integration, real-time monitoring, and comprehensive analytics for smart water systems.
+              </div>
+            </div>
+          </div>
+
+          <!-- Full Stack Project 2 -->
+          <div class="project-card fade-in">
+            <div class="project-images-grid">
+              <div class="project-image-item">
+                <img src="images/projects/flash 1.webp" alt="Service Platform">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/projects/flash 3.webp" alt="Booking System">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/projects/flash 4.webp" alt="Mobile Interface">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-title">
+                <h3>Flash Electrician - Service Platform</h3>
+              </div>
+              <div class="project-meta">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Stripe</span>
+              </div>
+              <div class="project-description">
+                On-demand electrician service platform with real-time booking, GPS tracking, payment processing, and comprehensive service management system.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Mobile Development Projects -->
+        <div class="tab-pane fade" id="mobile-development" role="tabpanel" aria-labelledby="mobile-dev-tab">
+
+          <!-- Mobile Project 1: Flash Electrician -->
+          <div class="project-card fade-in">
+            <div class="project-images-grid">
+              <div class="project-image-item">
+                <img src="images/projects/flash 1.webp" alt="Flash App Home">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/projects/flash 3.webp" alt="Service Booking">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/projects/flash 4.webp" alt="Live Tracking">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-title">
+                <h3>Flash Electrician - On-Demand Service App</h3>
+              </div>
+              <div class="project-meta">
+                <div class="tech-stack-section">
+                  <h5>Mobile Framework:</h5>
+                  <span class="tech-tag">Flutter 3.16</span>
+                  <span class="tech-tag">Dart 3.2</span>
+                  <span class="tech-tag">Bloc Pattern</span>
+                  <span class="tech-tag">Provider</span>
+                  <span class="tech-tag">GetX</span>
+                </div>
+                <div class="tech-stack-section">
+                  <h5>Backend Services:</h5>
+                  <span class="tech-tag">Firebase</span>
+                  <span class="tech-tag">Cloud Firestore</span>
+                  <span class="tech-tag">Cloud Functions</span>
+                  <span class="tech-tag">Firebase Auth</span>
+                  <span class="tech-tag">FCM</span>
+                </div>
+                <div class="tech-stack-section">
+                  <h5>Integrations:</h5>
+                  <span class="tech-tag">Google Maps API</span>
+                  <span class="tech-tag">Stripe Payment</span>
+                  <span class="tech-tag">Twilio SMS</span>
+                  <span class="tech-tag">OneSignal</span>
+                </div>
+              </div>
+              <div class="project-description">
+                <p><strong>Flash Electrician</strong> is an on-demand service application connecting customers with certified electricians in real-time. The app features dual interfaces for customers and service providers with comprehensive booking and management capabilities.</p>
+                
+                <div class="project-features">
+                  <h5>App Features:</h5>
+                  <ul>
+                    <li><strong>Dual App Architecture:</strong> Separate customer and electrician apps with synchronized data</li>
+                    <li><strong>Real-time GPS Tracking:</strong> Live location tracking and ETA updates</li>
+                    <li><strong>Smart Matching:</strong> AI-powered electrician matching based on location and expertise</li>
+                    <li><strong>In-app Payments:</strong> Secure payment processing with multiple payment methods</li>
+                    <li><strong>Service History:</strong> Complete service records with photos and invoices</li>
+                    <li><strong>Rating System:</strong> Comprehensive review and rating system</li>
+                    <li><strong>Emergency Services:</strong> 24/7 emergency electrician dispatch</li>
+                  </ul>
+                </div>
+
+                <div class="project-metrics">
+                  <h5>App Performance:</h5>
+                  <div class="metrics-grid">
+                    <div class="metric-item">
+                      <span class="metric-number">50K+</span>
+                      <span class="metric-label">App Downloads</span>
+                    </div>
+                    <div class="metric-item">
+                      <span class="metric-number">4.8/5</span>
+                      <span class="metric-label">App Store Rating</span>
+                    </div>
+                    <div class="metric-item">
+                      <span class="metric-number">< 3min</span>
+                      <span class="metric-label">Average Response Time</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Project 2: APC Power Management -->
+          <div class="project-card fade-in">
+            <div class="project-images-grid">
+              <div class="project-image-item">
+                <img src="images/projects/apc 1.jfif" alt="APC Mobile Dashboard">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/projects/apc 2.jfif" alt="Power Analytics">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/projects/apc 3.jfif" alt="Control Interface">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-title">
+                <h3>APC PowerManager - Industrial IoT Mobile App</h3>
+              </div>
+              <div class="project-meta">
+                <div class="tech-stack-section">
+                  <h5>Native Development:</h5>
+                  <span class="tech-tag">Swift 5.9 (iOS)</span>
+                  <span class="tech-tag">Kotlin (Android)</span>
+                  <span class="tech-tag">SwiftUI</span>
+                  <span class="tech-tag">Jetpack Compose</span>
+                  <span class="tech-tag">Core Data</span>
+                  <span class="tech-tag">Room DB</span>
+                </div>
+                <div class="tech-stack-section">
+                  <h5>IoT & Communication:</h5>
+                  <span class="tech-tag">MQTT Protocol</span>
+                  <span class="tech-tag">BLE</span>
+                  <span class="tech-tag">Wi-Fi Direct</span>
+                  <span class="tech-tag">Modbus TCP</span>
+                  <span class="tech-tag">WebSocket</span>
+                </div>
+                <div class="tech-stack-section">
+                  <h5>Backend & Analytics:</h5>
+                  <span class="tech-tag">Azure IoT Hub</span>
+                  <span class="tech-tag">Time Series DB</span>
+                  <span class="tech-tag">Power BI</span>
+                  <span class="tech-tag">Machine Learning</span>
+                </div>
+              </div>
+              <div class="project-description">
+                <p><strong>APC PowerManager</strong> is an enterprise-grade mobile application for monitoring and controlling industrial power systems. The app provides real-time insights, predictive maintenance alerts, and remote control capabilities for critical infrastructure.</p>
+                
+                <div class="project-features">
+                  <h5>Advanced Capabilities:</h5>
+                  <ul>
+                    <li><strong>Real-time Monitoring:</strong> Live power consumption, voltage, and current monitoring</li>
+                    <li><strong>Predictive Maintenance:</strong> AI-driven maintenance scheduling and failure prediction</li>
+                    <li><strong>Remote Control:</strong> Secure remote switching and load management</li>
+                    <li><strong>Energy Analytics:</strong> Comprehensive energy usage analysis and reporting</li>
+                    <li><strong>Alert Management:</strong> Customizable threshold-based notifications</li>
+                    <li><strong>Multi-site Management:</strong> Centralized control of multiple facilities</li>
+                    <li><strong>Offline Capability:</strong> Critical functions work without internet connectivity</li>
+                  </ul>
+                </div>
+
+                <div class="project-metrics">
+                  <h5>System Statistics:</h5>
+                  <div class="metrics-grid">
+                    <div class="metric-item">
+                      <span class="metric-number">1,500+</span>
+                      <span class="metric-label">Industrial Sites</span>
+                    </div>
+                    <div class="metric-item">
+                      <span class="metric-number">99.95%</span>
+                      <span class="metric-label">System Reliability</span>
+                    </div>
+                    <div class="metric-item">
+                      <span class="metric-number">30%</span>
+                      <span class="metric-label">Energy Cost Reduction</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Project 3: FoodieExpress -->
+          <div class="project-card fade-in">
+            <div class="project-images-grid">
+              <div class="project-image-item">
+                <img src="images/resource/service5-2.jpg" alt="Food App Interface">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/resource/service1-3.jpg" alt="Restaurant Listings">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/resource/service5-1.jpg" alt="Order Tracking">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-title">
+                <h3>FoodieExpress - Multi-Vendor Food Delivery</h3>
+              </div>
+              <div class="project-meta">
+                <div class="tech-stack-section">
+                  <h5>Mobile Development:</h5>
+                  <span class="tech-tag">React Native 0.73</span>
+                  <span class="tech-tag">TypeScript</span>
+                  <span class="tech-tag">Redux Toolkit</span>
+                  <span class="tech-tag">React Navigation</span>
+                  <span class="tech-tag">Reanimated 3</span>
+                </div>
+                <div class="tech-stack-section">
+                  <h5>Backend Infrastructure:</h5>
+                  <span class="tech-tag">Node.js</span>
+                  <span class="tech-tag">NestJS</span>
+                  <span class="tech-tag">MongoDB</span>
+                  <span class="tech-tag">Socket.io</span>
+                  <span class="tech-tag">Bull Queue</span>
+                </div>
+                <div class="tech-stack-section">
+                  <h5>Cloud & DevOps:</h5>
+                  <span class="tech-tag">AWS ECS</span>
+                  <span class="tech-tag">ElastiCache</span>
+                  <span class="tech-tag">CloudWatch</span>
+                  <span class="tech-tag">CodeDeploy</span>
+                </div>
+              </div>
+              <div class="project-description">
+                <p><strong>FoodieExpress</strong> is a comprehensive food delivery ecosystem serving customers, restaurants, and delivery partners. The platform supports multi-city operations with advanced logistics and restaurant management capabilities.</p>
+                
+                <div class="project-features">
+                  <h5>Platform Features:</h5>
+                  <ul>
+                    <li><strong>Multi-App Ecosystem:</strong> Customer, restaurant, and delivery partner applications</li>
+                    <li><strong>Advanced Search & Filters:</strong> Cuisine-based filtering with dietary preferences</li>
+                    <li><strong>Dynamic Pricing:</strong> Surge pricing and promotional discount engine</li>
+                    <li><strong>Route Optimization:</strong> AI-powered delivery route optimization</li>
+                    <li><strong>Restaurant Analytics:</strong> Comprehensive sales and performance dashboards</li>
+                    <li><strong>Loyalty Programs:</strong> Points-based reward system with gamification</li>
+                    <li><strong>Group Ordering:</strong> Split bills and group order management</li>
+                  </ul>
+                </div>
+
+                <div class="project-metrics">
+                  <h5>Business Metrics:</h5>
+                  <div class="metrics-grid">
+                    <div class="metric-item">
+                      <span class="metric-number">200K+</span>
+                      <span class="metric-label">Active Users</span>
+                    </div>
+                    <div class="metric-item">
+                      <span class="metric-number">5,000+</span>
+                      <span class="metric-label">Partner Restaurants</span>
+                    </div>
+                    <div class="metric-item">
+                      <span class="metric-number">25min</span>
+                      <span class="metric-label">Average Delivery Time</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Project 4: FitTracker Pro -->
+          <div class="project-card fade-in">
+            <div class="project-images-grid">
+              <div class="project-image-item">
+                <img src="images/resource/service3-1.jpg" alt="Fitness Dashboard">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/resource/service3-2.jpg" alt="Workout Tracker">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/resource/service3-3.jpg" alt="Social Features">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-title">
+                <h3>FitTracker Pro - Personal Fitness Companion</h3>
+              </div>
+              <div class="project-meta">
+                <div class="tech-stack-section">
+                  <h5>Native Development:</h5>
+                  <span class="tech-tag">Swift 5.9 (iOS)</span>
+                  <span class="tech-tag">Kotlin (Android)</span>
+                  <span class="tech-tag">SwiftUI</span>
+                  <span class="tech-tag">Jetpack Compose</span>
+                  <span class="tech-tag">Core Data</span>
+                  <span class="tech-tag">Room DB</span>
+                </div>
+                <div class="tech-stack-section">
+                  <h5>Health Integrations:</h5>
+                  <span class="tech-tag">HealthKit</span>
+                  <span class="tech-tag">Google Fit</span>
+                  <span class="tech-tag">Wear OS</span>
+                  <span class="tech-tag">Apple Watch</span>
+                  <span class="tech-tag">Heart Rate API</span>
+                </div>
+                <div class="tech-stack-section">
+                  <h5>Backend Services:</h5>
+                  <span class="tech-tag">Supabase</span>
+                  <span class="tech-tag">PostgreSQL</span>
+                  <span class="tech-tag">Supabase Auth</span>
+                  <span class="tech-tag">Real-time DB</span>
+                </div>
+              </div>
+              <div class="project-description">
+                <p><strong>FitTracker Pro</strong> is a comprehensive fitness application that combines workout tracking, nutrition monitoring, and social features to create a complete health and wellness ecosystem.</p>
+                
+                <div class="project-features">
+                  <h5>Key Functionalities:</h5>
+                  <ul>
+                    <li><strong>Smart Workout Plans:</strong> AI-generated personalized workout routines</li>
+                    <li><strong>Wearable Integration:</strong> Seamless sync with Apple Watch and Wear OS devices</li>
+                    <li><strong>Nutrition Tracking:</strong> Barcode scanning and comprehensive food database</li>
+                    <li><strong>Progress Analytics:</strong> Advanced charts and progress visualization</li>
+                    <li><strong>Social Challenges:</strong> Community challenges and leaderboards</li>
+                    <li><strong>Personal Trainer Chat:</strong> In-app messaging with certified trainers</li>
+                    <li><strong>Offline Mode:</strong> Full functionality without internet connection</li>
+                  </ul>
+                </div>
+
+                <div class="project-metrics">
+                  <h5>User Engagement:</h5>
+                  <div class="metrics-grid">
+                    <div class="metric-item">
+                      <span class="metric-number">100K+</span>
+                      <span class="metric-label">Active Users</span>
+                    </div>
+                    <div class="metric-item">
+                      <span class="metric-number">4.9/5</span>
+                      <span class="metric-label">Average Rating</span>
+                    </div>
+                    <div class="metric-item">
+                      <span class="metric-number">85%</span>
+                      <span class="metric-label">Monthly Retention</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Project 5: EduLearn Kids -->
+          <div class="project-card fade-in">
+            <div class="project-images-grid">
+              <div class="project-image-item">
+                <img src="images/resource/service4-1.jpg" alt="Learning Interface">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/resource/service4-2.jpg" alt="Interactive Games">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/resource/service4-3.jpg" alt="Progress Tracking">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-title">
+                <h3>EduLearn Kids - Interactive Learning Platform</h3>
+              </div>
+              <div class="project-meta">
+                <div class="tech-stack-section">
+                  <h5>Cross-Platform Development:</h5>
+                  <span class="tech-tag">Flutter 3.16</span>
+                  <span class="tech-tag">Dart 3.2</span>
+                  <span class="tech-tag">Flame Engine</span>
+                  <span class="tech-tag">Rive Animations</span>
+                  <span class="tech-tag">Provider</span>
+                </div>
+                <div class="tech-stack-section">
+                  <h5>Learning Technologies:</h5>
+                  <span class="tech-tag">AR Core</span>
+                  <span class="tech-tag">ARKit</span>
+                  <span class="tech-tag">Speech Recognition</span>
+                  <span class="tech-tag">Text-to-Speech</span>
+                  <span class="tech-tag">ML Kit</span>
+                </div>
+                <div class="tech-stack-section">
+                  <h5>Backend & Analytics:</h5>
+                  <span class="tech-tag">Firebase</span>
+                  <span class="tech-tag">Google Analytics</span>
+                  <span class="tech-tag">Crashlytics</span>
+                  <span class="tech-tag">Remote Config</span>
+                </div>
+              </div>
+              <div class="project-description">
+                <p><strong>EduLearn Kids</strong> is an innovative educational app designed for children aged 3-12, combining augmented reality, interactive games, and adaptive learning to create engaging educational experiences.</p>
+                
+                <div class="project-features">
+                  <h5>Educational Features:</h5>
+                  <ul>
+                    <li><strong>AR Learning:</strong> Augmented reality experiences for immersive learning</li>
+                    <li><strong>Adaptive Curriculum:</strong> Personalized learning paths based on child's progress</li>
+                    <li><strong>Interactive Games:</strong> Educational games covering math, science, and language</li>
+                    <li><strong>Voice Recognition:</strong> Speech-based learning and pronunciation correction</li>
+                    <li><strong>Parent Dashboard:</strong> Detailed progress reports for parents and teachers</li>
+                    <li><strong>Offline Content:</strong> Download lessons for learning without internet</li>
+                    <li><strong>Multi-language Support:</strong> Content available in 8 different languages</li>
+                  </ul>
+                </div>
+
+                <div class="project-metrics">
+                  <h5>Learning Impact:</h5>
+                  <div class="metrics-grid">
+                    <div class="metric-item">
+                      <span class="metric-number">75K+</span>
+                      <span class="metric-label">Young Learners</span>
+                    </div>
+                    <div class="metric-item">
+                      <span class="metric-number">92%</span>
+                      <span class="metric-label">Learning Improvement</span>
+                    </div>
+                    <div class="metric-item">
+                      <span class="metric-number">45min</span>
+                      <span class="metric-label">Daily Engagement</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Project 6: CryptoWallet Pro -->
+          <div class="project-card fade-in">
+            <div class="project-images-grid">
+              <div class="project-image-item">
+                <img src="images/resource/service8-1.jpg" alt="Wallet Interface">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/resource/service8-2.jpg" alt="Trading Dashboard">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+              <div class="project-image-item">
+                <img src="images/resource/service8-3.jpg" alt="Security Features">
+                <div class="project-image-item-overlay">
+                  <i class="fas fa-search-plus"></i>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-title">
+                <h3>CryptoWallet Pro - Secure Digital Asset Management</h3>
+              </div>
+              <div class="project-meta">
+                <div class="tech-stack-section">
+                  <h5>Security-First Development:</h5>
+                  <span class="tech-tag">React Native 0.73</span>
+                  <span class="tech-tag">TypeScript</span>
+                  <span class="tech-tag">Keychain Services</span>
+                  <span class="tech-tag">Biometric Auth</span>
+                  <span class="tech-tag">Hardware Security</span>
+                </div>
+                <div class="tech-stack-section">
+                  <h5>Blockchain Integration:</h5>
+                  <span class="tech-tag">Web3.js</span>
+                  <span class="tech-tag">Ethers.js</span>
+                  <span class="tech-tag">WalletConnect</span>
+                  <span class="tech-tag">Multi-chain Support</span>
+                  <span class="tech-tag">DeFi Protocols</span>
+                </div>
+                <div class="tech-stack-section">
+                  <h5>Real-time Data:</h5>
+                  <span class="tech-tag">CoinGecko API</span>
+                  <span class="tech-tag">WebSocket</span>
+                  <span class="tech-tag">Push Notifications</span>
+                  <span class="tech-tag">Chart Libraries</span>
+                </div>
+              </div>
+              <div class="project-description">
+                <p><strong>CryptoWallet Pro</strong> is a secure, feature-rich cryptocurrency wallet supporting multiple blockchains, DeFi protocols, and advanced trading features with institutional-grade security.</p>
+                
+                <div class="project-features">
+                  <h5>Advanced Capabilities:</h5>
+                  <ul>
+                    <li><strong>Multi-chain Support:</strong> Bitcoin, Ethereum, Binance Smart Chain, Polygon, and more</li>
+                    <li><strong>DeFi Integration:</strong> Staking, yield farming, and liquidity pool participation</li>
+                    <li><strong>Hardware Wallet Support:</strong> Ledger and Trezor integration</li>
+                    <li><strong>Advanced Security:</strong> Biometric authentication and encrypted seed storage</li>
+                    <li><strong>Portfolio Analytics:</strong> Real-time P&L tracking and tax reporting</li>
+                    <li><strong>NFT Support:</strong> View, send, and receive NFTs across multiple chains</li>
+                    <li><strong>Price Alerts:</strong> Custom price and volume-based notifications</li>
+                  </ul>
+                </div>
+
+                <div class="project-metrics">
+                  <h5>Platform Statistics:</h5>
+                  <div class="metrics-grid">
+                    <div class="metric-item">
+                      <span class="metric-number">150K+</span>
+                      <span class="metric-label">Wallet Users</span>
+                    </div>
+                    <div class="metric-item">
+                      <span class="metric-number">$50M+</span>
+                      <span class="metric-label">Assets Under Management</span>
+                    </div>
+                    <div class="metric-item">
+                      <span class="metric-number">0</span>
+                      <span class="metric-label">Security Breaches</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
-      <div class="swiper-pagination"></div>
+      
     </div>
-  </div>
-</div>
+
 
 
      
